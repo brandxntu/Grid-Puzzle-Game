@@ -1,25 +1,47 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
 
-function App() {
+
+
+class App extends React.Component {
+
+  state = { isActive: false };
+
+  handleToggle = () => {
+    this.setState({ isActive: !this.state.isActive });
+  };
+
+
+  render(){
+  const isActive = this.state.isActive;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <React.Fragment>
+
+    <h>Sliding Puzzle React</h>
+
+
+    <div class="grid-container">
+      <div class="grid-item">1</div>
+      <div class="grid-item">2</div>
+      <div class="grid-item">3</div>
+      <div class="grid-item">4</div>
+      <div class="grid-item">5</div>
+      <div class="grid-item">6</div>
+      <div class="grid-item">7</div>
+      <div class="grid-item" id={isActive ? "app" : null} onClick={this.handleToggle}>8</div>
+
+
+      <div class="reset-button">
+          <button onClick={this.handleToggle}>Reset</button>
+      </div>
+
     </div>
-  );
+
+
+
+    </React.Fragment>
+  )}
 }
 
 export default App;
